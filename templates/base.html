@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Hodnocení maturitní zkoušky</title>
+    <style>
+        html, body{
+            margin: 0;
+        }
+        #content{
+            margin: 80px 100px 100px 100px;
+            max-width: 75%;
+            min-height: 500%;
+            border: solid;
+            border-color: black;
+            border-width: 2px;
+            border-radius: 20px;
+            padding: 100px;
+            font-family: 'Georgia', serif;
+        }
+        header{
+            min-height: 100px;
+            min-width: 100%;
+            background-color: #98D46C;
+        }
+        footer{
+            position: absolute;
+            bottom: 0;
+            min-height: 120px;
+            min-width: 100%;
+            background-color: #98D46C;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        {% block header %}
+        {% endblock %}
+    </header>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+    <footer>
+        {% block footer %}
+        {% endblock %}
+    </footer>
+</body>
+</html>

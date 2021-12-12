@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block header %}
+<br>
+{{ super() }}
+{% endblock %}
+
+{% block content %}
+  <h2>
+    Profilová část maturitní zkoušky z jazyka anglického
+  </h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        <table>
+            <tr><td>{{ form.test_points.label }}:</td><td>{{ form.test_points }}</td></tr>
+            <tr><td>{{ form.oral_exam_points.label }}:</td><td>{{ form.oral_exam_points }}</td></tr>
+            <tr><td></td><td><input type="submit" value="Oznámkovat" style="width: 100%;"></td></tr>
+        </table>
+    </form>
+    {% for field, errors in form.errors.items() %}
+        {% for error in errors %}
+            <span style="color: red;">Chyba pole - {{ field }} hláška - {{ error }}</span><br>
+        {% endfor %}
+    {% endfor %}
+    <hr>
+    <br>
+    Známka: {% if result %} {{ result }} {% else %} Vyplňte formulář {% endif %}
+{% endblock %}
