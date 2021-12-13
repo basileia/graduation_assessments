@@ -28,9 +28,9 @@ def calculate_score(test_points, oral_exam_points):
         test_perc = test_points / (max_points_test / 100) * test_coef
         oral_exam_perc = oral_exam_points / (max_point_oral_exam / 100) * oral_exam_coef
         perc = test_perc + oral_exam_perc
-        if 88 <= perc < 100:
+        if 87 < perc <= 100:
             return "Výborný - 1"
-        elif 73 < perc < 87:
+        elif 73 < perc <= 87:
             return "Chvalitebný - 2"
         elif 58 < perc <= 73:
             return "Dobrý - 3"
