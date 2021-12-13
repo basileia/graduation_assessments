@@ -27,7 +27,7 @@ def calculate_score(test_points, oral_exam_points):
     oral_exam_coef = 0.6
 
     if test_points < min_points_test or oral_exam_points < min_points_oral_exam:
-        return "Nedosažení minimálního počtu bodů - opakování příslušné části profilové maturiní zkoušky"
+        return "Nedosažení minimálního počtu bodů - opakování příslušné části profilové maturitní zkoušky"
     elif test_points > max_points_test:
         return "Maximální počet bodů pro písemnou práci je 36"
     elif oral_exam_points > max_point_oral_exam:
