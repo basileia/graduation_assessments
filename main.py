@@ -29,9 +29,9 @@ def calculate_score(test_points, oral_exam_points):
     if test_points < min_points_test or oral_exam_points < min_points_oral_exam:
         return "Nedostatečný - 5"
     elif test_points > max_points_test:
-        return "Maximální počet bodů pro písemnou práci je", max_points_test
+        return "Maximální počet bodů pro písemnou práci je 36"
     elif oral_exam_points > max_point_oral_exam:
-        return "Maximální počet bodů pro ústní zkoušku je", max_point_oral_exam
+        return "Maximální počet bodů pro ústní zkoušku je 39"
     else:
         test_perc = test_points / (max_points_test / 100) * test_coef
         oral_exam_perc = oral_exam_points / (max_point_oral_exam / 100) * oral_exam_coef
