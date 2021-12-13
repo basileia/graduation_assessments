@@ -4,12 +4,16 @@ from flask import Flask, render_template
 from wtforms import IntegerField, widgets
 
 app = Flask(__name__)
-app.secret_key = os.environ.get('SECRET_KEY', 'dev')
+app.secret_key = os.environ.get("SECRET_KEY", "dev")
 
 
 class MyForm(FlaskForm):
-    test_points = IntegerField("Písemná práce - počet bodů", widget=widgets.Input(input_type="number"))
-    oral_exam_points = IntegerField("Ústní zkouška - počet bodů", widget=widgets.Input(input_type="number"))
+    test_points = IntegerField(
+        "Písemná práce - počet bodů", widget=widgets.Input(input_type="number")
+    )
+    oral_exam_points = IntegerField(
+        "Ústní zkouška - počet bodů", widget=widgets.Input(input_type="number")
+    )
 
 
 def calculate_score(test_points, oral_exam_points):
@@ -24,6 +28,10 @@ def calculate_score(test_points, oral_exam_points):
 
     if test_points < min_points_test or oral_exam_points < min_points_oral_exam:
         return "Nedostatečný - 5"
+    elif test_points > max_points_test:
+        return "Maximální počet bodů pro písemnou práci je", max_points_test
+    elif oral_exam_points > max_point_oral_exam:
+        return "Maximální počet bodů pro ústní zkoušku je", max_point_oral_exam
     else:
         test_perc = test_points / (max_points_test / 100) * test_coef
         oral_exam_perc = oral_exam_points / (max_point_oral_exam / 100) * oral_exam_coef
