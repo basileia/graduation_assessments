@@ -6,11 +6,12 @@
 
 {% block content %}
   <h2>
-    Profilová část maturitní zkoušky z jazyka anglického
+    Profilová část maturitní zkoušky
   </h2>
     <form method="POST">
         {{ form.hidden_tag() }}
         <table>
+            <tr><td>{{ form.languages.label }}:</td><td>{{ form.languages }}</td></tr>
             <tr><td>{{ form.test_points.label }}:</td><td>{{ form.test_points }}</td></tr>
             <tr><td>{{ form.oral_exam_points.label }}:</td><td>{{ form.oral_exam_points }}</td></tr>
             <tr><td></td><td><input type="submit" value="Oznámkovat" style="width: 100%;"></td></tr>
