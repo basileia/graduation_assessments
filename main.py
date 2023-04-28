@@ -19,33 +19,33 @@ class MyForm(FlaskForm):
 
 def calculate_score_eng(test_points, oral_exam_points):
     # kritéria pro hodnocení profilové části maturitní zkoušky jazyka anglického
-    # rok 2022
+    # rok 2023
     min_points_test = 16
     max_points_test = 36
     test_coef = 0.4
     min_points_oral_exam = 18
-    max_point_oral_exam = 39
+    max_points_oral_exam = 39
     oral_exam_coef = 0.6
 
     if test_points < min_points_test or oral_exam_points < min_points_oral_exam:
         return "Nedosažení minimálního počtu bodů - opakování příslušné části profilové maturitní zkoušky"
     elif test_points > max_points_test:
         return "Maximální počet bodů pro písemnou práci je 36"
-    elif oral_exam_points > max_point_oral_exam:
+    elif oral_exam_points > max_points_oral_exam:
         return "Maximální počet bodů pro ústní zkoušku je 39"
     else:
-        test_perc = test_points / (max_points_test / 100) * test_coef
-        oral_exam_perc = oral_exam_points / (max_point_oral_exam / 100) * oral_exam_coef
-        perc = round((test_perc + oral_exam_perc), 0)
+        test_perc = test_coef * test_points / max_points_test
+        oral_exam_perc = oral_exam_coef * oral_exam_points / max_points_oral_exam
+        perc = (test_perc + oral_exam_perc) * 100
         if 88 <= perc <= 100:
             return "Výborný - 1"
-        elif 74 <= perc <= 87:
+        elif 74 <= perc < 88:
             return "Chvalitebný - 2"
-        elif 59 <= perc <= 73:
+        elif 59 <= perc < 74:
             return "Dobrý - 3"
-        elif 44 <= perc <= 58:
+        elif 44 <= perc < 59:
             return "Dostatečný - 4"
-        elif perc <= 43:
+        elif perc < 44:
             return "Nedostatečný - 5"
         else:
             return "Někde se stala chyba."
@@ -53,33 +53,33 @@ def calculate_score_eng(test_points, oral_exam_points):
 
 def calculate_score_cze(test_points, oral_exam_points):
     # kritéria pro hodnocení profilové části maturitní zkoušky jazyka českého
-    # rok 2022
+    # rok 2023
     min_points_test = 12
     max_points_test = 30
     test_coef = 0.4
     min_points_oral_exam = 13
-    max_point_oral_exam = 28
+    max_points_oral_exam = 28
     oral_exam_coef = 0.6
 
     if test_points < min_points_test or oral_exam_points < min_points_oral_exam:
         return "Nedosažení minimálního počtu bodů - opakování příslušné části profilové maturitní zkoušky"
     elif test_points > max_points_test:
         return "Maximální počet bodů pro písemnou práci je 30"
-    elif oral_exam_points > max_point_oral_exam:
+    elif oral_exam_points > max_points_oral_exam:
         return "Maximální počet bodů pro ústní zkoušku je 28"
     else:
-        test_perc = test_points / (max_points_test / 100) * test_coef
-        oral_exam_perc = oral_exam_points / (max_point_oral_exam / 100) * oral_exam_coef
-        perc = round((test_perc + oral_exam_perc), 0)
-        if 88 <= perc <= 100:
+        test_perc = test_coef * test_points / max_points_test
+        oral_exam_perc = oral_exam_coef * oral_exam_points / max_points_oral_exam
+        perc = (test_perc + oral_exam_perc) * 100
+        if 86 <= perc <= 100:
             return "Výborný - 1"
-        elif 74 <= perc <= 87:
+        elif 70 <= perc < 86:
             return "Chvalitebný - 2"
-        elif 59 <= perc <= 73:
+        elif 56 <= perc < 70:
             return "Dobrý - 3"
-        elif 44 <= perc <= 58:
+        elif 40 <= perc < 56:
             return "Dostatečný - 4"
-        elif perc <= 43:
+        elif perc < 40:
             return "Nedostatečný - 5"
         else:
             return "Někde se stala chyba."
